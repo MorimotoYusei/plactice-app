@@ -1,6 +1,6 @@
-import styles from '../styles/Home.module.css'
+import styles from "./Links.module.css"
 
-export function Main() {
+export function Links() {
   return (
         <div className={styles.grid}>
           <a href="https://nextjs.org/docs" className={styles.card}>
@@ -31,7 +31,6 @@ export function Main() {
             </p>
           </a>
         </div>
-
         
   )
 }
