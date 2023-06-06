@@ -29,7 +29,7 @@ export function Links() {
   return (
     <div className={styles.grid}>
       {ITEMS.map((item) => {
-        console.log(item);
+        // console.log(item);
           return(
             <a key={item.href} href={item.href} className={styles.card}>
               <h2 className={styles.title}>{item.title} &rarr;</h2>
