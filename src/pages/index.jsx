@@ -11,6 +11,8 @@ export default function Home() {
   const [count,setCount] = useState(1);
   const [text,setText] = useState("");
   const [isShow,setIsShow] = useState(true);
+  const [array,setArray] = useState([]);
+
 
   // number
   const handleClick = useCallback((e) => {
@@ -32,9 +34,21 @@ export default function Home() {
   // true false
   const handleDisplay = useCallback(() => {
     setIsShow((isShow) => {
-      return !isShow
+      return isShow ? false : true;
+      // return !isShow
     });
   }, []);
+
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if(prevArray.some((item) => item === text)){
+        alert("同じ要素が既に存在します。");
+        return prevArray;
+      }
+      const newArray = [...prevArray, text];
+      return newArray;
+    });
+  }, [text]);
 
   // ページ遷移時の処理
   useEffect(() => {
@@ -61,9 +75,17 @@ export default function Home() {
           ボタン
         </button>
         <input type="text" value={text} onChange={handleChange} />
+
+        
         <button onClick={handleDisplay}>
           {isShow ? "非表示": "表示"}
         </button>
+        <button onClick={handleAdd}>追加</button>
+        <ul>
+          {array.map((item) => {
+            return <li key={item}>{item}</li>
+          })}
+        </ul>
       <Main title="index" />
 
       <Footer />
